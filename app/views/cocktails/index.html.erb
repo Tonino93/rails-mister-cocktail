@@ -1,0 +1,43 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path("wvlbq8c4856xsbknjvfd")%>);">
+  <div class="container">
+    <div class="d-flex flex-column">
+      <div class="col-12 col-md6 mr-auto">
+        <h1>Mister Cocktail</h1>
+      </div>
+      <div class="col-12 col-md6 mr-auto">
+        <p>
+        <span id="banner-typed-text"></span>
+        </p>
+      </div>
+      <!-- <div class="col-12 col-md6 mr-auto">
+        <li>
+        <%= link_to "Add a cocktail", new_cocktail_path, class: "btn mb-3" %>
+      </li>
+      </div> -->
+      <div class="col-12 col-md6 mr-auto">
+        </li>
+        <a class="btn" href="#category"><i class="fas fa-chevron-down"></i></a>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card-category" id="category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path("poc7w0ukufyd60zknbra")%>)">
+<h2>My categories</h2>
+</div>
+<div class="container mb-5">
+  <div class="row justify-content-center">
+    <% @cocktails.each do |cocktail| %>
+    <div class="card-product col-md-12 col-lg-4 col-md-4 m-1 border-rounded">
+      <%= link_to "+", cocktail_path(cocktail), method: :delete, data: { confirm: "Sur to delete?" }, class: "card-remove-link" %>
+      <%= cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill %>
+      <div class="card-product-infos">
+           <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+              <div class="add-dose">
+                <li><%= link_to "+ Dose", cocktail_path(cocktail), class: 'btn pt-1 pb-1 mr-1'%><%= link_to "+ Review", cocktail_path(cocktail), class: 'btn pt-1 pb-1'%></li>
+              </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

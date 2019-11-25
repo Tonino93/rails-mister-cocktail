@@ -1,0 +1,42 @@
+<div class="container-banner">
+  <div class="banner-container" style="background-image: url(<%= cl_image_path @cocktail.photo%>);">
+        <h1><%= @cocktail.name %></h1>
+        <div class="d-lg-flex">
+          <div class="col-xm-12 col-lg-6 mt-4">
+              <div class="block-1">
+                <h2>Ingredients</h2>
+                <% @cocktail.doses.each do |dose| %>
+                  <li style="list-style: none"><%= dose.ingredient.name %> : <%= dose.description %>  <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+                          <i class="fa fa-trash destroy_dose" style="color:#a73332"></i>
+                        <% end %></li>
+                <% end %>
+              </div>
+              <div class="overflow block-1 mt-4 mb-2" style="overflow: auto; overflow-x: hidden; height:203px">
+                <h2>Reviews</h2>
+                <% @cocktail.reviews.each do |review| %>
+                <div style="background-color : transparent;display: flex;justify-content: space-between; padding: 0 50px 0 50px">
+                <div><%=  '⭐️' * review.rating.to_i %></div>
+                <div style="font-size: 1.3rem;"><%=  review.content %></div>
+              </div>
+              <% end %>
+              </div>
+            </div>
+            <div class="col-xm-12 col-lg-6 mt-4">
+              <div class="block-1 pb-2">
+                <h2>Add a dose</h2>
+                <div class="col-12">
+                    <%= render "doses/form", dose: @dose %>
+                </div>
+              </div>
+              <div class="col-12 mt-4 mb-2">
+                <button id="form_toggle" class="btn btn-block mb-3">
+                  Add a review
+                </button>
+                <div id="form" class="form-content">
+                  <%= render "reviews/form", review: @review %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>

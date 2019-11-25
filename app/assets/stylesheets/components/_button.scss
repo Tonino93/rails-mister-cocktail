@@ -1,0 +1,11 @@
+.btn {
+  background-color:#a73332;
+  color: #ffffff;
+  border-radius: 5px;
+  font-weight:bold;
+
+  &:hover {
+    opacity:0.7;
+    color: #ffffff;
+  }
+}
